@@ -23,7 +23,7 @@ Proyek ini dibangun menggunakan **Node.js**, **Express.js**, dan **MongoDB Nativ
 ## 📂 Struktur Folder Proyek
 
 ```text
-Final Project/
+subtrack-api/
 ├── config/
 │   └── database.js                    # Koneksi MongoClient & pembuatan Index
 ├── controllers/
@@ -54,8 +54,8 @@ Final Project/
 
 ### 2. Clone Repository & Install Dependensi
 ```bash
-git clone <URL_REPOSITORY_ANDA>
-cd "Final Project"
+git clone https://github.com/Zkiells/substrack-api.git
+cd substrack-api
 npm install
 ```
 
@@ -242,3 +242,11 @@ Format respon API konsisten:
    - Buat subscription terlebih dahulu (`POST /api/subscriptions`).
    - Salin nilai `_id` dari respon, lalu masukkan ke variabel collection `subscriptionId` (atau langsung pakai di parameter URL).
    - Jalankan request lainnya: `GET`, `PUT`, `DELETE`, `POST /api/usage-reviews`, dan `GET /api/analytics/summary`.
+
+---
+
+## 👨‍💻 Author
+
+- **Nama Mentee:** Jehezkiel Hinn Sumit
+- **Program:** Backend Basic — Final Project
+- **Repository:** [https://github.com/Zkiells/substrack-api](https://github.com/Zkiells/substrack-api)

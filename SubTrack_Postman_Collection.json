@@ -1,0 +1,204 @@
+{
+  "info": {
+    "_postman_id": "a8f3b4c1-subtrack-api-collection",
+    "name": "SubTrack — Subscription & Usage Intelligence API",
+    "description": "Postman Collection untuk pengujian lengkap seluruh endpoint SubTrack REST API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "subscriptionId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "usageReviewId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Subscriptions",
+      "item": [
+        {
+          "name": "Create Subscription (Monthly)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Netflix\",\n  \"category\": \"Entertainment\",\n  \"price\": 54000,\n  \"currency\": \"IDR\",\n  \"billingCycle\": \"monthly\",\n  \"startDate\": \"2024-01-01\",\n  \"nextBillingDate\": \"2026-12-01\",\n  \"status\": \"active\",\n  \"notes\": \"Family plan\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Create Subscription (Custom Interval)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Adobe Creative Cloud\",\n  \"category\": \"Productivity\",\n  \"price\": 150000,\n  \"currency\": \"IDR\",\n  \"billingCycle\": \"custom\",\n  \"customIntervalDays\": 90,\n  \"startDate\": \"2024-03-01\",\n  \"nextBillingDate\": \"2026-12-01\",\n  \"status\": \"active\",\n  \"notes\": \"Special 90-day cycle plan\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get All Subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get Subscription by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions/{{subscriptionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions", "{{subscriptionId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Subscription",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 65000,\n  \"notes\": \"Updated plan tier\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions/{{subscriptionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions", "{{subscriptionId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/subscriptions/{{subscriptionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "subscriptions", "{{subscriptionId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Monthly Usage Reviews",
+      "item": [
+        {
+          "name": "Create Usage Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriptionId\": \"{{subscriptionId}}\",\n  \"month\": 11,\n  \"year\": 2026,\n  \"usageCount\": 42,\n  \"note\": \"Daily usage during commute\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usage-reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usage-reviews"]
+            }
+          }
+        },
+        {
+          "name": "Get All Usage Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/usage-reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usage-reviews"]
+            }
+          }
+        },
+        {
+          "name": "Get Usage Review by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/usage-reviews/{{usageReviewId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usage-reviews", "{{usageReviewId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Usage Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usageCount\": 55,\n  \"note\": \"Adjusted count after review\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usage-reviews/{{usageReviewId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usage-reviews", "{{usageReviewId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Spending Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/analytics/summary",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "analytics", "summary"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
